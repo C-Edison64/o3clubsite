@@ -20,13 +20,25 @@ const Booking = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // For now, we'll just log the data and display an alert.
-    console.log("Booking Data:", formData);
-    alert("Your booking request has been submitted!");
-    // Later: Here you would send formData to your backend via fetch or axios.
-    // e.g., fetch('/api/booking', { method: 'POST', body: JSON.stringify(formData), headers: { 'Content-Type': 'application/json' } });
+    try {
+      const response = await fetch("http://localhost:5000/api/booking", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      console.log("Booking successful:", result);
+      alert("Your booking request has been submitted!");
+      // Optionally reset form data:
+      setFormData({ name: "", email: "", date: "", time: "" });
+    } catch (error) {
+      console.error("Error submitting booking:", error);
+      alert("There was an error submitting your booking.");
+    }
   };
 
   return (
