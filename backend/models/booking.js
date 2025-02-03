@@ -2,7 +2,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../db");
 
-// Define the Booking model
+// Define the Booking model with the required fields
 const Booking = sequelize.define(
   "Booking",
   {
@@ -33,7 +33,7 @@ const Booking = sequelize.define(
   },
   {
     tableName: "bookings",
-    timestamps: true,
+    timestamps: true, // This adds createdAt and updatedAt fields automatically
   }
 );
 
