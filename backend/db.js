@@ -1,17 +1,17 @@
 // backend/db.js
-const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
-// Create a new Sequelize instance using environment variables
+const { Sequelize } = require("sequelize");
+
 const sequelize = new Sequelize(
-  process.env.DB_NAME, // Database name
-  process.env.DB_USER, // Database user
-  process.env.DB_PASSWORD, // Database password
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST || "localhost",
-    port: process.env.DB_PORT || 5000,
+    port: process.env.DB_PORT || 5432,
     dialect: "postgres",
-    logging: false, // Set to true if you want SQL logs for debugging
+    logging: false,
   }
 );
 
@@ -21,6 +21,7 @@ const connectDB = async () => {
     console.log("Database connected successfully.");
   } catch (error) {
     console.error("Unable to connect to the database:", error);
+    throw error;
   }
 };
 
