@@ -21,7 +21,6 @@ app.get("/", (req, res) => {
   res.send("API is running!");
 });
 app.use("/api/booking", bookingRoute);
-
 connectDB()
   .then(() => {
     sequelize
