@@ -4,7 +4,7 @@ const router = express.Router();
 
 // Temporarily return a test response to confirm the endpoint is hit
 router.post("/", (req, res) => {
-  console.log("Received POST /api/booking with body:", req.body);
+  console.log("Received POST /api/booking with body: ", req.body);
   res
     .status(201)
     .json({ message: "Booking received (test response)", data: req.body });

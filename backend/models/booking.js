@@ -33,7 +33,7 @@ const Booking = sequelize.define(
   },
   {
     tableName: "bookings",
-    timestamps: true, // This adds createdAt and updatedAt fields automatically
+    timestamps: true, // This adds createdAt and updatedAt fields
   }
 );
 
